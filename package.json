@@ -1,0 +1,118 @@
+{
+	"name": "console-key",
+	"displayName": "Console Key",
+	"description": "",
+	"version": "0.0.1",
+	"publisher": "yuanchongen",
+	"engines": {
+	  "vscode": "^1.52.0"
+	},
+	"categories": [
+	  "Other"
+	],
+	"activationEvents": [
+	  "*"
+	],
+	"main": "./src/index.js",
+	"contributes": {
+	  "configuration": {
+		"type": "object",
+		"title": "Add Console Params",
+		"properties": {
+		  "consoleKey.suffix": {
+			"type": "string",
+			"default": "【 => ",
+			"description": "console前缀"
+		  },
+		  "consoleKey.prefix": {
+			"type": "string",
+			"default": " <= 】",
+			"description": "console后缀"
+		  },
+		  "consoleKey.fixStyle": {
+			"type": "string",
+			"default": "color:#53DCFB; font-style: italic; background-color: blue;padding: 2px;",
+			"description": "前后缀样式"
+		  }
+		}
+	  },
+	  "commands": [
+		{
+		  "command": "console-key.deleteAllConsole",
+		  "title": "Delete Console"
+		},
+		{
+		  "command": "console-key.deleteConsoleByExplorer",
+		  "title": "Delete Console"
+		},
+		{
+		  "command": "console-key.addConsoleNormal",
+		  "title": "Add Console"
+		},
+		{
+		  "command": "console-key.addConsoleInfo",
+		  "title": "Add Console Info"
+		}
+	  ],
+	  "keybindings": [
+		{
+		  "command": "console-key.addConsoleNormal",
+		  "key": "alt+c",
+		  "mac": "alt+c",
+		  "when": "editorFocus"
+		},
+		{
+		  "command": "console-key.addConsoleInfo",
+		  "key": "alt+shift+c",
+		  "mac": "alt+shift+c",
+		  "when": "editorFocus"
+		},
+		{
+		  "command": "console-key.deleteAllConsole",
+		  "key": "alt+d",
+		  "mac": "alt+d",
+		  "when": "editorFocus"
+		}
+	  ],
+	  "menus": {
+		"editor/context": [
+		  {
+			"when": "editorFocus",
+			"command": "console-key.addConsoleNormal",
+			"group": "navigation@1"
+		  },
+		  {
+			"when": "editorFocus",
+			"command": "console-key.deleteAllConsole",
+			"group": "navigation@1"
+		  }
+		],
+		"explorer/context": [
+		  {
+			"command": "console-key.deleteConsoleByExplorer",
+			"group": "navigation@1"
+		  }
+		]
+	  }
+	},
+	"scripts": {
+	  "lint": "eslint .",
+	  "pretest": "npm run lint",
+	  "test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+	  "@babel/parser": "^7.14.1",
+	  "@babel/traverse": "^7.14.0",
+	  "@types/glob": "^7.1.3",
+	  "@types/mocha": "^8.0.4",
+	  "@types/node": "^12.11.7",
+	  "@types/vscode": "^1.52.0",
+	  "eslint": "^7.15.0",
+	  "glob": "^7.1.6",
+	  "mocha": "^8.1.3",
+	  "recast": "^0.20.4",
+	  "typescript": "^4.1.2",
+	  "vscode-test": "^1.4.1"
+	}
+  }
+  
